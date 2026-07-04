@@ -1,0 +1,25 @@
+{
+  "website": {
+    "name": "Marsa Alam Transfers",
+    "url": "https://marsaalam.vercel.app",
+    "language": "en"
+  },
+  "blogger": {
+    "enabled": true,
+    "posts_per_day": 1
+  },
+  "seo": {
+    "min_words": 1500,
+    "max_words": 2500
+  },
+  "social": {
+    "facebook": false,
+    "linkedin": false,
+    "x": false,
+    "pinterest": false
+  },
+  "analytics": {
+    "clarity": true,
+    "google_search_console": true
+  }
+}
