@@ -1,32 +1,60 @@
 import fs from "fs";
+import { askGemini } from "./gemini.js";
 
-const config = JSON.parse(fs.readFileSync("./config.json", "utf8"));
+const config = JSON.parse(
+    fs.readFileSync("./config.json", "utf8")
+);
 
 async function generateKeywords() {
+
     const prompt = `
-Generate 30 SEO keywords for:
+You are an SEO Expert.
+
+Generate 50 SEO keywords.
 
 Website:
 ${config.website.name}
 
-Website URL:
+URL:
 ${config.website.url}
+
+Country:
+${config.website.country}
 
 Language:
 ${config.website.language}
 
-The keywords must target tourists searching for:
-- airport transfer
-- taxi
-- private driver
-- Marsa Alam
-- excursions
-- hotel transfer
+Business:
 
-Return only JSON.
+Airport Transfers
+Taxi
+Private Driver
+Tours
+Excursions
+Hotels Transfer
+
+Return JSON only.
+
+Example:
+
+[
+  {
+    "keyword":"marsa alam airport transfer",
+    "difficulty":"easy",
+    "intent":"commercial"
+  }
+]
 `;
 
-    console.log(prompt);
+    const result = await askGemini(prompt);
+
+    fs.writeFileSync(
+        "./data/keywords.json",
+        result
+    );
+
+    console.log("Keywords Saved");
+
 }
 
 generateKeywords();
