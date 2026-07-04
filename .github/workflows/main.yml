@@ -1,0 +1,23 @@
+name: AI Marketing System
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"
+  workflow_dispatch:
+
+jobs:
+  marketing:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: System Started
+        run: |
+          echo "====================================="
+          echo "AI Marketing System Running..."
+          echo "Repository: $GITHUB_REPOSITORY"
+          echo "Current Time:"
+          date
+          echo "====================================="
