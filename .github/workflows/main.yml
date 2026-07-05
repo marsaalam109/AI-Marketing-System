@@ -20,7 +20,10 @@ jobs:
         run: |
           pwd
           find .
-
+      - name: Debug
+        run: |
+          pwd
+          ls -R
       - name: Run Keyword Hunter
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
