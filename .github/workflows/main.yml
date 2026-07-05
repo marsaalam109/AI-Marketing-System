@@ -11,22 +11,18 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
 
-      - name: Verify Node
-        run: node -v
-
-      - name: Show Repository Files
+      - name: Debug
         run: |
           pwd
-          ls -la
-          ls -la scripts
+          find .
 
       - name: Run Keyword Hunter
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
-          node scripts/keyword-hunter.js
+          node ./scripts/keyword-hunter.js
