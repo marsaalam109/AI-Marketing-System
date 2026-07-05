@@ -16,16 +16,16 @@ jobs:
         with:
           node-version: 22
 
-      - name: Debug
+      - name: Show Everything
         run: |
+          echo "CURRENT DIR:"
           pwd
+          echo "=================="
+          echo "FILES:"
           find .
-      - name: Debug
-        run: |
-          pwd
-          ls -R
+          echo "=================="
+
       - name: Run Keyword Hunter
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: |
-          node ./scripts/keyword-hunter.js
+        run: node ./scripts/keyword-hunter.js
